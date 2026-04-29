@@ -1,0 +1,60 @@
+# ===========================================
+# AUDIT LLM METHODOLOGY - Dépendances Python
+# ===========================================
+
+# --- CORE ---
+python-dotenv>=1.0.0
+pyyaml>=6.0
+jinja2>=3.1.0
+
+# --- DATA & ANALYSIS ---
+pandas>=2.0.0
+numpy>=1.24.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.17.0
+
+# --- FAIRNESS ---
+fairlearn>=0.10.0           # Microsoft - métriques et mitigation
+aif360>=0.5.0               # IBM - métriques avancées
+
+# --- LLM CLIENTS ---
+openai>=1.0.0               # API OpenAI
+anthropic>=0.25.0           # API Anthropic Claude
+huggingface_hub>=0.20.0     # Modèles open source
+
+# --- RED-TEAMING ---
+# garak>=0.9.0              # NVIDIA - à installer manuellement (pip install garak)
+promptfoo>=0.30.0           # Framework de tests LLM
+
+# --- ROBUSTNESS ---
+giskard>=2.0.0              # Tests automatisés ML/LLM
+
+# --- NLP ---
+transformers>=4.35.0        # HuggingFace transformers
+sentence-transformers>=2.2.0
+spacy>=3.7.0
+
+# --- REPORTING ---
+reportlab>=4.0.0            # Génération PDF
+weasyprint>=60.0            # HTML → PDF
+markdown>=3.5.0
+python-docx>=1.0.0          # Export Word
+
+# --- NOTEBOOKS ---
+jupyter>=1.0.0
+ipywidgets>=8.0.0
+notebook>=7.0.0
+
+# --- UTILITIES ---
+tqdm>=4.66.0                # Barres de progression
+rich>=13.0.0                # Affichage console
+click>=8.1.0                # CLI
+
+# --- TESTING ---
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# --- LINTING (dev) ---
+black>=23.0.0
+ruff>=0.1.0
