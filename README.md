@@ -54,6 +54,13 @@ réutilisables.
 audit-llm-methodology/
 │
 ├── README.md                       # Vous êtes ici
+├── requirements.txt                # Dépendances Python
+│
+├── data/                           # Données de test
+│   └── ats-audit/                  # Audit biais ATS (matching CV/offre)
+│       ├── cv_canonique.txt        # CV template avec placeholders {prenom} {nom}
+│       └── offre.txt               # Offre d'emploi CDI dev full-stack
+│
 ├── docs/                           # Documentation pédagogique par étape
 │   ├── 01-cadrage.md
 │   ├── 02-donnees.md
@@ -64,32 +71,46 @@ audit-llm-methodology/
 │   └── 07-rapport.md
 │
 ├── notebooks/                      # Notebooks Jupyter exécutables
-│   ├── 01_cadrage_systeme.ipynb
-│   ├── 02_analyse_donnees.ipynb
-│   ├── 03_fairness_metrics.ipynb
-│   ├── 04_redteaming_llm.ipynb
-│   ├── 05_robustesse_tests.ipynb
-│   └── 06_synthese_remediation.ipynb
+│   ├── 01_cadrage_systeme.ipynb     # Étape 1 — Cadrage
+│   ├── 02_analyse_donnees.ipynb     # Étape 2 — Données
+│   ├── 03_fairness_metrics.ipynb    # Étape 3 — Fairness
+│   ├── 04_redteaming_llm.ipynb      # Étape 4 — Red-teaming
+│   ├── 05_robustesse_tests.ipynb    # Étape 5 — Robustesse
+│   ├── 06_synthese_remediation.ipynb# Étape 6 — Synthèse
+│   └── case_study_ats_matching.ipynb# Cas d'étude sectoriel : tri de CV (RH)
 │
 ├── templates/                      # Templates réutilisables
 │   ├── questionnaire_client.md
 │   ├── fiche_systeme_ia.md
-│   ├── rapport_audit.tex
-│   └── model_card.md
+│   ├── cahier_des_charges_audit.md
+│   ├── plan_remediation.md
+│   ├── rapport_audit.md
+│   ├── rapport_audit.tex           # Version LaTeX avec placeholders Jinja2
+│   └── model_card.md               # Model card HuggingFace-style
 │
-├── prompts/                        # Bibliothèques de prompts adversariaux
-│   ├── biais_genre.json
-│   ├── biais_origine.json
-│   ├── jailbreaks.json
+├── prompts/                        # Bibliothèques de prompts adversariaux (150 prompts)
+│   ├── README.md
+│   ├── biais_genre.json            # 15 tests de biais de genre
+│   ├── biais_origine.json          # 16 tests de biais d'origine
+│   ├── catalogue_adversarial.json  # 58 tests multi-catégories
 │   └── tests_sectoriels/
+│       ├── rh.json                 # 16 tests RH/recrutement
+│       ├── sante.json              # 15 tests santé
+│       ├── education.json          # 15 tests éducation
+│       └── finance.json            # 15 tests finance/crédit
 │
 ├── scripts/                        # Scripts Python utilitaires
-│   ├── run_full_audit.py
-│   ├── generate_report.py
+│   ├── run_full_audit.py           # Orchestration des 6 notebooks
+│   ├── generate_report.py          # Génération rapport MD/PDF
+│   ├── build_test_dataset.py       # Génération dataset de test stratifié
 │   └── utils/
+│       ├── __init__.py
+│       ├── api_client.py           # Wrapper OpenAI/Anthropic avec retry
+│       ├── serialization.py        # Sérialisation YAML sûre (numpy-safe)
+│       └── scoring.py              # Fonctions de scoring avec seuils justifiés
 │
 └── examples/                       # Cas d'études complets
-    └── case_study_chatbot_rh.md
+    └── case_study_chatbot_rh.md    # Walkthrough audit chatbot "Talia"
 ```
 
 ## 🚀 Démarrage rapide
@@ -103,9 +124,18 @@ audit-llm-methodology/
 ### Installation
 
 ```bash
-git clone https://github.com/[votre-username]/audit-llm-methodology.git
+git clone https://github.com/hsauv/audit-llm-methodology.git
 cd audit-llm-methodology
 pip install -r requirements.txt
+```
+
+Variables d'environnement utiles (voir `.env.example`) :
+
+```bash
+export AUDIT_USE_REAL_API=true            # false = mode démo simulé (défaut)
+export AUDIT_LLM_PROVIDER=anthropic       # ou openai
+export AUDIT_LLM_MODEL=claude-sonnet-4-6  # ou gpt-4o, etc.
+export ANTHROPIC_API_KEY=...
 ```
 
 ### Premier audit
@@ -142,10 +172,13 @@ Cette méthodologie s'appuie sur :
 
 Ce projet est ouvert aux contributions :
 
-- 🐛 [Signaler un bug ou suggérer une amélioration](https://github.com/[votre-username]/audit-llm-methodology/issues)
+- 🐛 [Signaler un bug ou suggérer une amélioration](https://github.com/hsauv/audit-llm-methodology/issues)
 - 🌍 Traduire la documentation
 - 📝 Ajouter des cas d'études dans `examples/`
 - 🎯 Enrichir les bibliothèques de prompts dans `prompts/`
+
+Voir [`CONTRIBUTING.md`](CONTRIBUTING.md) pour les conventions et le guide de
+contribution.
 
 ## 📄 Licence
 
@@ -160,7 +193,7 @@ Le code (notebooks, scripts) est sous licence **MIT**.
 
 ## 👤 À propos
 
-Cette méthodologie est portée par **[Hanen Mizouni](https://www.linkedin.com/in/[votre-profil])**,
+Cette méthodologie est portée par **[Hanen Mizouni](https://www.linkedin.com/in/hanen-mizouni/)**,
 Architecte Cloud et Présidente fondatrice de l'association
 [**IA au féminin**](https://iaaufeminin.fr), qui œuvre à la sensibilisation
 sur les biais de l'IA et à l'inclusion numérique.
@@ -177,7 +210,7 @@ Si vous utilisez cette méthodologie dans un travail académique ou professionne
   title = {Audit LLM — Méthodologie complète},
   year = {2026},
   publisher = {GitHub},
-  url = {https://github.com/[votre-username]/audit-llm-methodology}
+  url = {https://github.com/hsauv/audit-llm-methodology}
 }
 ```
 
