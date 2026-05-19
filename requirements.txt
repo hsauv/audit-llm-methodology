@@ -51,6 +51,13 @@ tqdm>=4.66.0                # Barres de progression
 rich>=13.0.0                # Affichage console
 click>=8.1.0                # CLI
 
+# --- STATISTICS ---
+statsmodels>=0.14.0          # Tests statistiques (Benjamini-Hochberg FDR, etc.)
+scipy>=1.11.0                # Bootstrap, chi2, Mann-Whitney, effect sizes
+
+# --- RETRY / RESILIENCE ---
+tenacity>=8.2.0              # Retry avec backoff exponentiel pour appels API
+
 # --- TESTING ---
 pytest>=7.4.0
 pytest-cov>=4.1.0
