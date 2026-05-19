@@ -272,6 +272,73 @@ Pour 90 % des LLMs grand public que vous auditez, vous serez en **Risque
 Limité** ou **Haut Risque**. Le Haut Risque est votre **prix premium** : ces
 audits prennent 2-3x plus de temps mais peuvent se facturer 3-5x plus.
 
+### Exception Article 6(3) — Tache etroite
+
+L'AI Act prevoit une **exception importante** a l'Article 6(3) : un systeme IA
+deploye dans un domaine haut risque (Annexe III) peut etre **exempte** des
+obligations strictes s'il remplit une **tache purement procedurale ou etroite**
+qui ne presente pas de risque significatif pour la sante, la securite ou les
+droits fondamentaux.
+
+**Exemples concrets** :
+- Un chatbot RH qui se contente de rediriger vers la bonne page FAQ →
+  potentiellement exempte (tache etroite, pas de decision)
+- Un chatbot RH qui pre-selectionne des CV → **non exempte** (decision
+  affectant les droits des candidats)
+
+**Attention** : cette exception est interpretee **strictement** par la
+Commission. Dans le doute, classez en haut risque — c'est plus protecteur
+pour votre client et pour votre responsabilite d'auditeur.
+
+### Obligations GPAI (Chapitre V)
+
+Si le systeme audite utilise un **modele d'IA a usage general** (GPAI) comme
+GPT-4 ou Claude, des obligations supplementaires s'appliquent au titre du
+**Chapitre V** de l'AI Act :
+
+**Pour le fournisseur du modele de base** (OpenAI, Anthropic, Mistral...) :
+- Documentation technique (Art. 53)
+- Respect du droit d'auteur (Art. 53)
+- Resume des donnees d'entrainement (Art. 53)
+- Si risque systemique (>10^25 FLOPS) : evaluation du modele, tests
+  adversariaux, reporting des incidents (Art. 55)
+
+**Pour le deployer** (votre client) :
+- S'assurer que le fournisseur GPAI respecte ses obligations
+- Documenter l'usage specifique du modele GPAI dans le systeme
+- Appliquer les obligations du niveau de risque du **systeme deploye**
+  (pas seulement du modele de base)
+
+**Implication pour l'audit** : verifiez que votre client a bien un contrat
+avec son fournisseur GPAI couvrant ces obligations. Demandez la documentation
+technique fournie par le provider.
+
+### Positionnalite et biais de l'auditeur
+
+L'audit d'un systeme IA n'est pas neutre. L'auditeur apporte ses propres
+biais, angles morts et presupposes. Pour un audit professionnel et defensible :
+
+**1. Declarez votre positionnalite**
+
+En annexe du rapport, declarez :
+- Votre formation et expertise (technique, juridique, sciences sociales)
+- Vos eventuels conflits d'interet
+- Les limites de votre perspective (ex: monolingue, pas d'expertise sectorielle)
+
+**2. Diversifiez l'equipe d'audit**
+
+Un audit mene par une seule personne a des angles morts inevitables.
+Recommandations :
+- Au minimum 2 perspectives complementaires (technique + domaine)
+- Idealement, diversite de genre, d'origine et de formation
+- Si l'audit porte sur des populations vulnerables, impliquer un representant
+
+**3. Documentez vos choix methodologiques**
+
+Chaque choix d'audit (metriques retenues, seuils, populations testees) est un
+choix qui peut etre conteste. Documentez **pourquoi** vous avez fait chaque
+choix, avec des references.
+
 ---
 
 ## 1.4 Identifier les variables sensibles

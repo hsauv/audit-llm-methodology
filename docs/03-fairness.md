@@ -276,6 +276,64 @@ calibré équitablement.
 
 ---
 
+## 3.2bis Theoreme d'impossibilite de Chouldechova (2017)
+
+### Pourquoi c'est fondamental
+
+Avant de calculer les metriques de fairness, vous devez comprendre une
+**limitation mathematique fondamentale** : il est **impossible** de satisfaire
+simultanement les trois metriques principales quand les taux de base different
+entre groupes.
+
+### Le theoreme
+
+Chouldechova (2017) a demontre que pour un classifieur binaire, si les **taux
+de base** (prevalence de la classe positive) different entre deux groupes, alors
+on **ne peut pas** satisfaire simultanement :
+
+1. **Calibration** : P(Y=1 | S=s, A=a) = s pour chaque groupe A
+2. **Egalite des taux de faux positifs** (FPR)
+3. **Egalite des taux de faux negatifs** (FNR)
+
+Kleinberg, Mullainathan et Raghavan (2016) ont demontre un resultat similaire :
+**Calibration + Demographic Parity** sont incompatibles sauf dans des cas
+triviaux.
+
+### Ce que ca signifie pour votre audit
+
+Vous ne pouvez **pas** exiger qu'un modele soit parfait sur les 5 metriques
+simultanement. Vous devez **choisir** lesquelles prioriser en fonction du
+**contexte d'usage**.
+
+Quand un client vous dit "on veut etre equitable sur tout", votre reponse
+professionnelle est : "C'est mathematiquement impossible. Voici les
+arbitrages possibles."
+
+### Guide de selection des metriques
+
+| Contexte | Metrique prioritaire | Justification |
+|----------|---------------------|---------------|
+| **Recrutement / RH** | Disparate Impact + DP | Jurisprudence EEOC (regle des 4/5), le taux de selection doit etre equitable entre groupes |
+| **Credit / Finance** | Equal Opportunity + Calibration | Les personnes solvables doivent etre acceptees quel que soit le groupe ; les scores de risque doivent etre calibres |
+| **Sante / Diagnostic** | Equal Opportunity (TPR) | Ne pas manquer de vrais cas positifs dans un groupe (sous-diagnostic) est la priorite absolue |
+| **Education / Orientation** | Demographic Parity | L'acces aux filieres doit etre equitable independamment du groupe d'origine |
+| **Justice / Recidive** | Equalized Odds | Les taux d'erreur (faux positifs ET faux negatifs) doivent etre egaux — c'est le standard COMPAS/ProPublica |
+
+### Recommandation pratique
+
+Dans votre rapport, presentez **toutes** les metriques, mais :
+1. Identifiez la metrique prioritaire pour le contexte
+2. Documentez les arbitrages inevitables (ex: "ameliorer DP degrade la calibration de 3 points")
+3. Citez les references pour justifier le choix
+
+### References
+
+- Chouldechova, A. (2017). *Fair prediction with disparate impact: A study of bias in recidivism prediction instruments*. Big Data, 5(2), 153-163.
+- Kleinberg, J., Mullainathan, S. & Raghavan, M. (2016). *Inherent Trade-Offs in the Fair Determination of Risk Scores*. ITCS 2017.
+- Barocas, S. & Selbst, A. (2016). *Big Data's Disparate Impact*. California Law Review, 104(3).
+
+---
+
 ## 3.3 Analyser les écarts entre sous-groupes
 
 ### Le tableau de fairness

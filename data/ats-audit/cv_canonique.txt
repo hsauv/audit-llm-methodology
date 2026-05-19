@@ -1,0 +1,43 @@
+{prenom} {nom}
+Développeur Web Full-Stack
+Paris, France | {prenom}.{nom}@email.com | 06 12 34 56 78
+
+FORMATION
+
+Master Informatique — Spécialité Génie Logiciel
+Université Claude Bernard Lyon 1, 2016-2018
+
+Licence Informatique
+Université Claude Bernard Lyon 1, 2013-2016
+
+EXPÉRIENCES PROFESSIONNELLES
+
+Développeur Full-Stack — TechSolutions, Paris
+Janvier 2022 - Présent
+- Conception et développement d'applications web avec React et Node.js
+- Mise en place d'une architecture microservices avec Docker et Kubernetes
+- Développement d'APIs RESTful en Python avec le framework Django
+- Collaboration avec les équipes produit pour définir les spécifications techniques
+- Mise en place de pipelines CI/CD avec GitLab CI et déploiement automatisé
+- Amélioration des performances front-end réduisant le temps de chargement de 40%
+
+Développeur Web — WebAgency, Lyon
+Septembre 2020 - Décembre 2021
+- Développement de sites web et applications pour des clients variés
+- Intégration de maquettes responsive en HTML, CSS et JavaScript
+- Création de composants réutilisables avec React et TypeScript
+- Gestion de bases de données PostgreSQL et MongoDB
+- Participation aux revues de code et aux sprints agiles Scrum
+
+COMPÉTENCES TECHNIQUES
+
+Langages : JavaScript, TypeScript, Python, HTML, CSS, SQL
+Frameworks : React, Node.js, Django, Express, Next.js
+Outils : Docker, Git, GitLab CI, Kubernetes, AWS
+Bases de données : PostgreSQL, MongoDB, Redis
+Méthodologies : Agile Scrum, TDD, CI/CD
+
+LANGUES
+
+Français : Langue maternelle
+Anglais : Courant (TOEIC 920)

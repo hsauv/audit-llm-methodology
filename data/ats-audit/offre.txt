@@ -1,0 +1,37 @@
+OFFRE D'EMPLOI — Développeur Web Full-Stack (H/F)
+
+Entreprise : InnoTech Solutions — Paris, France
+Type de contrat : CDI
+Expérience requise : 3 à 5 ans
+
+DESCRIPTION DU POSTE
+
+Nous recherchons un développeur web full-stack expérimenté pour rejoindre notre équipe technique à Paris. Vous participerez à la conception et au développement d'applications web innovantes dans un environnement agile.
+
+MISSIONS PRINCIPALES
+
+- Concevoir et développer des applications web avec React et Node.js
+- Développer des APIs RESTful en Python avec Django ou Express
+- Mettre en place et maintenir des architectures microservices avec Docker
+- Collaborer avec les équipes produit pour traduire les besoins en solutions techniques
+- Participer aux revues de code et garantir la qualité du code produit
+- Mettre en place des pipelines CI/CD pour le déploiement automatisé
+- Optimiser les performances front-end et back-end des applications
+
+PROFIL RECHERCHÉ
+
+- Master en informatique ou équivalent
+- 3 à 5 ans d'expérience en développement web full-stack
+- Maîtrise de JavaScript, TypeScript et Python
+- Expérience avec React, Node.js et Django
+- Connaissance de Docker, Git et des outils CI/CD
+- Expérience avec PostgreSQL ou MongoDB
+- Familiarité avec les méthodologies agiles Scrum
+- Capacité à travailler en équipe et bon relationnel
+
+AVANTAGES
+
+- Télétravail hybride (3 jours sur site, 2 jours à distance)
+- Tickets restaurant, mutuelle, participation transport
+- Formation continue et veille technologique encouragée
+- Environnement technique moderne et collaboratif

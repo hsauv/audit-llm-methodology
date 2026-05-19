@@ -1,0 +1,218 @@
+\documentclass[a4paper,11pt]{article}
+
+% --- Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{amsmath}
+
+\geometry{margin=2.5cm}
+
+% --- Couleurs ---
+\definecolor{bleuaudit}{HTML}{3498DB}
+\definecolor{vertok}{HTML}{27AE60}
+\definecolor{orangepreoc}{HTML}{F39C12}
+\definecolor{rougecrit}{HTML}{E74C3C}
+\definecolor{grisfonce}{HTML}{2C3E50}
+
+% --- En-tete/pied de page ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{grisfonce}{Rapport d'audit IA --- \VAR{audit_name}}}
+\fancyhead[R]{\small\textcolor{grisfonce}{\VAR{date}}}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{\small\textcolor{grisfonce}{Confidentiel}}
+
+% --- Titre ---
+\titleformat{\section}{\Large\bfseries\color{grisfonce}}{}{0em}{}[\vspace{-0.5em}\rule{\textwidth}{0.5pt}]
+\titleformat{\subsection}{\large\bfseries\color{bleuaudit}}{}{0em}{}
+
+% --- Jinja2 : les variables sont entourees de \VAR{} et les blocs de \BLOCK{} ---
+% Compilation : d'abord rendre via Jinja2, puis compiler le .tex resultant
+
+\begin{document}
+
+% === PAGE DE GARDE ===
+\begin{titlepage}
+\centering
+\vspace*{3cm}
+
+{\Huge\bfseries\textcolor{grisfonce}{Rapport d'Audit IA}}\\[0.5cm]
+{\LARGE\textcolor{bleuaudit}{\VAR{audit_name}}}\\[2cm]
+
+\begin{tabular}{ll}
+\textbf{Client}   & \VAR{client_name} \\
+\textbf{Systeme}  & \VAR{system_name} \\
+\textbf{Auditeur} & \VAR{auditor_name} \\
+\textbf{Date}     & \VAR{date} \\
+\textbf{Version}  & \VAR{version} \\
+\textbf{Statut}   & \VAR{status} \\
+\end{tabular}
+
+\vfill
+
+{\large\textcolor{grisfonce}{Methodologie d'audit LLM v1.0}}\\
+{\small Hanen Mizouni --- IA au feminin}
+
+\vspace{1cm}
+{\footnotesize\textcolor{rougecrit}{CONFIDENTIEL --- Ne pas diffuser sans autorisation}}
+\end{titlepage}
+
+% === TABLE DES MATIERES ===
+\tableofcontents
+\newpage
+
+% === 1. SYNTHESE EXECUTIVE ===
+\section{Synthese executive}
+
+Ce rapport presente les resultats de l'audit du systeme IA \textbf{\VAR{system_name}},
+realise du \VAR{date_start} au \VAR{date_end} selon la methodologie d'audit LLM v1.0.
+
+\subsection{Score global}
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Dimension} & \textbf{Score} & \textbf{Grade} & \textbf{Poids} \\
+\midrule
+Donnees (etape 2) & \VAR{score_data}/100 & \VAR{grade_data} & 20\% \\
+Fairness (etape 3) & \VAR{score_fairness}/100 & \VAR{grade_fairness} & 30\% \\
+Red-teaming (etape 4) & \VAR{score_redteam}/100 & \VAR{grade_redteam} & 25\% \\
+Robustesse (etape 5) & \VAR{score_robustness}/100 & \VAR{grade_robustness} & 15\% \\
+Conformite & \VAR{score_compliance}/100 & \VAR{grade_compliance} & 10\% \\
+\midrule
+\textbf{GLOBAL} & \textbf{\VAR{score_global}/100} & \textbf{\VAR{grade_global}} & 100\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Top 3 des risques identifies}
+
+\begin{enumerate}
+\BLOCK{for risk in top_risks}
+    \item \textbf{\VAR{risk.title}} --- Severite : \VAR{risk.severity}\\
+    \VAR{risk.description}
+\BLOCK{endfor}
+\end{enumerate}
+
+\subsection{Top 3 des recommandations prioritaires}
+
+\begin{enumerate}
+\BLOCK{for rec in top_recommendations}
+    \item \textbf{\VAR{rec.title}} --- Effort : \VAR{rec.effort}\\
+    \VAR{rec.description}
+\BLOCK{endfor}
+\end{enumerate}
+
+\newpage
+
+% === 2. CONTEXTE ET METHODOLOGIE ===
+\section{Contexte et methodologie}
+
+\subsection{Description du systeme}
+\VAR{system_description}
+
+\subsection{Perimetre de l'audit}
+\VAR{audit_scope}
+
+\subsection{Methodologie appliquee}
+Cet audit suit la \textbf{Methodologie d'audit LLM v1.0} (Mizouni, 2026),
+structuree en 7 etapes sur 5 jours. Les cadres de reference sont :
+
+\begin{itemize}
+    \item EU AI Act (Reglement 2024/1689) --- Annexes IV et XI
+    \item NIST AI Risk Management Framework (AI 100-1)
+    \item ISO/IEC 42001 --- Systeme de management de l'IA
+    \item Recommandations CNIL sur l'IA
+\end{itemize}
+
+\subsection{Limites de l'audit}
+\VAR{audit_limitations}
+
+% === 3. ANALYSE DES DONNEES ===
+\section{Analyse des donnees (etape 2)}
+
+\VAR{data_analysis_content}
+
+% === 4. RESULTATS DE FAIRNESS ===
+\section{Resultats de fairness (etape 3)}
+
+\VAR{fairness_content}
+
+% === 5. RESULTATS DU RED-TEAMING ===
+\section{Red-teaming et tests adversariaux (etape 4)}
+
+\VAR{redteam_content}
+
+% === 6. RESULTATS DE ROBUSTESSE ===
+\section{Robustesse et stabilite (etape 5)}
+
+\VAR{robustness_content}
+
+% === 7. PLAN DE REMEDIATION ===
+\section{Plan de remediation (etape 6)}
+
+\VAR{remediation_content}
+
+% === 8. CONFORMITE AI ACT ===
+\section{Conformite AI Act}
+
+\subsection{Classification du systeme}
+\begin{itemize}
+    \item \textbf{Niveau de risque} : \VAR{risk_level}
+    \item \textbf{Justification} : \VAR{risk_justification}
+\end{itemize}
+
+\subsection{Obligations applicables}
+\begin{longtable}{p{6cm}p{3cm}p{4cm}}
+\toprule
+\textbf{Obligation} & \textbf{Statut} & \textbf{Action requise} \\
+\midrule
+\BLOCK{for obligation in obligations}
+\VAR{obligation.name} & \VAR{obligation.status} & \VAR{obligation.action} \\
+\BLOCK{endfor}
+\bottomrule
+\end{longtable}
+
+% === 9. ANNEXES ===
+\section{Annexes}
+
+\subsection{A. Methodologie detaillee}
+Voir documentation complete : \url{https://github.com/[repo]/audit-llm-methodology}
+
+\subsection{B. Catalogue de prompts utilises}
+\VAR{prompts_catalog_summary}
+
+\subsection{C. Tableaux de metriques detailles}
+\VAR{detailed_metrics_tables}
+
+\subsection{D. Bibliographie}
+\begin{itemize}
+    \item Barocas, S. \& Selbst, A. (2016). Big Data's Disparate Impact. \textit{California Law Review}.
+    \item Chouldechova, A. (2017). Fair prediction with disparate impact. \textit{Big Data}.
+    \item Kleinberg, J., Mullainathan, S. \& Raghavan, M. (2016). Inherent Trade-Offs in the Fair Determination of Risk Scores. \textit{ITCS}.
+    \item Mitchell, M. et al. (2019). Model Cards for Model Reporting. \textit{FAT*}.
+    \item NIST (2023). AI Risk Management Framework. AI 100-1.
+    \item Reglement (UE) 2024/1689 --- AI Act.
+\end{itemize}
+
+\vfill
+
+\begin{center}
+\small\textcolor{grisfonce}{
+Rapport genere selon la Methodologie d'audit LLM v1.0\\
+Hanen Mizouni --- IA au feminin\\
+\VAR{date}
+}
+\end{center}
+
+\end{document}
